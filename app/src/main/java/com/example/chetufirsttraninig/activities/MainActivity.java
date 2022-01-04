@@ -1,4 +1,4 @@
-package com.example.chetufirsttraninig;
+package com.example.chetufirsttraninig.activities;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -24,11 +24,14 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.chetufirsttraninig.R;
 import com.example.chetufirsttraninig.databinding.ActivityMainBinding;
+import com.example.chetufirsttraninig.utility.Utility;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.nio.file.WatchKey;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener, PopupMenu.OnMenuItemClickListener, RadioGroup.OnCheckedChangeListener {
+public class MainActivity extends BaseActivity implements View.OnClickListener, PopupMenu.OnMenuItemClickListener, RadioGroup.OnCheckedChangeListener {
     private Button btnSubmit, btn2;
     private Context context;
     private EditText etInput;
@@ -44,6 +47,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        context =  MainActivity.this;
 
 
 //        btnSubmit = findViewById(R.id.btnSubmit);
@@ -87,12 +91,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         binding.btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(context, binding.etInput.getText().toString(), Toast.LENGTH_SHORT).show();
+//                Toast.makeText(context, binding.etInput.getText().toString(), Toast.LENGTH_SHORT).show();
+//                Utility.showToast(context, "Hello");
+//                showCustomToast("Hello Custom");
+
+                Snackbar.make(view, "Helo snackbar", Snackbar.LENGTH_SHORT).setAction("Ok", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        // TODO : Do ur TAsk
+                    }
+                }).show();
             }
         });
 
 
-        registerForContextMenu(btnSubmit);
+//        registerForContextMenu(btnSubmit);
+
     }
 
     @Override
@@ -113,7 +127,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //        popupMenu.show();
 
         //TODO: onclick event throun xml
-        onSubmitButtonClick(view);
+//        onSubmitButtonClick(view);
     }
 
 
@@ -121,7 +135,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public boolean onCreateOptionsMenu(Menu menu) {
 //        MenuInflater menuInflater = getMenuInflater();
 //        menuInflater.inflate(R.menu.options_menu_items, menu);
-        getMenuInflater().inflate(R.menu.options_menu_items, menu);
+//        getMenuInflater().inflate(R.menu.options_menu_items, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -196,4 +210,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //       Toast.makeText(context, radioButton.getText().toString(), Toast.LENGTH_SHORT).show();
 
     }
+
+
+
+
+
 }

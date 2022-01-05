@@ -5,11 +5,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 
 import com.example.chetufirsttraninig.R;
 import com.example.chetufirsttraninig.databinding.ActivityIntentConceptBinding;
+import com.example.chetufirsttraninig.model.UserData;
+import com.example.chetufirsttraninig.utility.Constants;
+import com.example.chetufirsttraninig.utility.Utility;
+import com.google.gson.Gson;
 
 public class IntentConceptActivity extends BaseActivity implements View.OnClickListener {
     private String _tag = "TAG";
@@ -64,8 +69,61 @@ public class IntentConceptActivity extends BaseActivity implements View.OnClickL
 
     @Override
     public void onClick(View view) {
-        Intent intent = new Intent(context, SecondActivity.class);
-        intent.putExtra("input", binding.etInput.getText().toString());
-        startActivity(intent);
+        if (!TextUtils.isEmpty(binding.etFname.getText().toString()) && !TextUtils.isEmpty(binding.etLname.getText().toString())
+        && !TextUtils.isEmpty(binding.etPhoneno.getText().toString())){
+            if (binding.etPhoneno.getText().toString().length() == 10) {
+                // TODO : (1) Passing data to intent
+//            Intent intent = new Intent(context, SecondActivity.class);
+//            intent.putExtra(Constants.FNAME, binding.etFname.getText().toString());
+//            intent.putExtra(Constants.LNAME, binding.etLname.getText().toString());
+//            intent.putExtra(Constants.PHONENO, binding.etPhoneno.getText().toString());
+//            startActivity(intent);
+
+                // TODO : (2) Passing data through Bundle
+
+                /*Intent intent = new Intent(context, SecondActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putString(Constants.FNAME, binding.etFname.getText().toString());
+                bundle.putString(Constants.LNAME, binding.etLname.getText().toString());
+                bundle.putString(Constants.PHONENO, binding.etPhoneno.getText().toString());
+                intent.putExtras(bundle);
+                startActivity(intent);*/
+
+                // TODO : (3) Passing data through Custom class object to intent
+                /*UserData userData = new UserData();
+                userData.setFname(binding.etFname.getText().toString());
+                userData.setLname(binding.etLname.getText().toString());
+                userData.setPhoneno(binding.etPhoneno.getText().toString());
+
+                Intent intent = new Intent(context, SecondActivity.class);
+                intent.putExtra(Constants.SERIALIZEDDATA, userData);
+                startActivity(intent);*/
+
+                // TODO : (4) Passing data through  JSON object to intent
+                UserData userData = new UserData();
+                userData.setFname(binding.etFname.getText().toString());
+                userData.setLname(binding.etLname.getText().toString());
+                userData.setPhoneno(binding.etPhoneno.getText().toString());
+
+                Intent intent = new Intent(context, SecondActivity.class);
+                intent.putExtra(Constants.JSONDATA, new Gson().toJson(userData));
+                startActivity(intent);
+
+
+
+            }else {
+                Utility.showToast(context, "Please enter valid phone no.");
+            }
+
+
+        }else {
+            if (TextUtils.isEmpty(binding.etFname.getText().toString())){
+                binding.etFname.setError("Enter first name");
+            }else if (TextUtils.isEmpty(binding.etLname.getText().toString())){
+                binding.etLname.setError("Enter last name");
+            }else if (TextUtils.isEmpty(binding.etPhoneno.getText().toString())){
+                binding.etPhoneno.setError("Enter phone number");
+            }
+        }
     }
 }

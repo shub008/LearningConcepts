@@ -8,6 +8,9 @@ import android.util.Log;
 
 import com.example.chetufirsttraninig.R;
 import com.example.chetufirsttraninig.databinding.ActivitySecondBinding;
+import com.example.chetufirsttraninig.model.UserData;
+import com.example.chetufirsttraninig.utility.Constants;
+import com.google.gson.Gson;
 
 public class SecondActivity extends BaseActivity {
     private String _tag = "TAG";
@@ -21,8 +24,30 @@ public class SecondActivity extends BaseActivity {
         Log.d(_tag, "onCreate() in Second class");
 
         Intent intent = getIntent();
-        String input = intent.getStringExtra("input");
-        binding.tvResult.setText(input);
+
+        // TODO (1) getting data from intent
+//        String fname = intent.getStringExtra(Constants.FNAME);
+//        String lname = intent.getStringExtra(Constants.LNAME);
+//        String phoneno = intent.getStringExtra(Constants.PHONENO);
+
+
+        //TODO (2) getting data from bundle
+//        Bundle bundle = intent.getExtras();
+//        String fname = bundle.getString(Constants.FNAME);
+//        String lname = bundle.getString(Constants.LNAME);
+//        String phoneno = bundle.getString(Constants.PHONENO);
+
+        //TODO (3) getting data from Serialized object
+//        UserData userData = (UserData) intent.getSerializableExtra(Constants.SERIALIZEDDATA);
+
+        //TODO (3) getting data from JSON object
+        String jsonData = intent.getStringExtra(Constants.JSONDATA);
+        UserData userData = new Gson().fromJson(jsonData, UserData.class);
+
+        binding.tvName.setText(userData.getFname()+ " "+ userData.getLname());
+        binding.tvPhooneNo.setText(userData.getPhoneno());
+
+
 
 
     }

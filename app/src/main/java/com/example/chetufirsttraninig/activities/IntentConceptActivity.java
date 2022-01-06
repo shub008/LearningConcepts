@@ -28,6 +28,8 @@ public class IntentConceptActivity extends BaseActivity implements View.OnClickL
         context = this;
         Log.d(_tag, "onCreate() in fist class");
 
+        getSupportActionBar().setTitle("App Titile");
+
         binding.btnClick.setOnClickListener(this);
     }
 
@@ -81,13 +83,14 @@ public class IntentConceptActivity extends BaseActivity implements View.OnClickL
 
                 // TODO : (2) Passing data through Bundle
 
-                /*Intent intent = new Intent(context, SecondActivity.class);
-                Bundle bundle = new Bundle();
-                bundle.putString(Constants.FNAME, binding.etFname.getText().toString());
-                bundle.putString(Constants.LNAME, binding.etLname.getText().toString());
-                bundle.putString(Constants.PHONENO, binding.etPhoneno.getText().toString());
-                intent.putExtras(bundle);
-                startActivity(intent);*/
+                Intent intent = new Intent(context, SecondActivity.class);
+                intent.putExtra(Constants.FNAME, binding.etFname.getText().toString());
+//                Bundle bundle = new Bundle();
+//                bundle.putString(Constants.FNAME, binding.etFname.getText().toString());
+//                bundle.putString(Constants.LNAME, binding.etLname.getText().toString());
+//                bundle.putString(Constants.PHONENO, binding.etPhoneno.getText().toString());
+//                intent.putExtras(bundle);
+                startActivity(intent);
 
                 // TODO : (3) Passing data through Custom class object to intent
                 /*UserData userData = new UserData();
@@ -100,14 +103,14 @@ public class IntentConceptActivity extends BaseActivity implements View.OnClickL
                 startActivity(intent);*/
 
                 // TODO : (4) Passing data through  JSON object to intent
-                UserData userData = new UserData();
+                /*UserData userData = new UserData();
                 userData.setFname(binding.etFname.getText().toString());
                 userData.setLname(binding.etLname.getText().toString());
-                userData.setPhoneno(binding.etPhoneno.getText().toString());
+                userData.setPhoneno(binding.etPhoneno.getText().toString());*/
 
-                Intent intent = new Intent(context, SecondActivity.class);
+                /*Intent intent = new Intent(context, SecondActivity.class);
                 intent.putExtra(Constants.JSONDATA, new Gson().toJson(userData));
-                startActivity(intent);
+                startActivity(intent);*/
 
 
 

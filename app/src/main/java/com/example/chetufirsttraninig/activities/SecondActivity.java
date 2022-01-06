@@ -24,11 +24,14 @@ public class SecondActivity extends BaseActivity {
         Log.d(_tag, "onCreate() in Second class");
 
         Intent intent = getIntent();
+        Bundle bundle = intent.getExtras();
+        String fname = bundle.getString(Constants.FNAME);
 
         // TODO (1) getting data from intent
 //        String fname = intent.getStringExtra(Constants.FNAME);
 //        String lname = intent.getStringExtra(Constants.LNAME);
 //        String phoneno = intent.getStringExtra(Constants.PHONENO);
+
 
 
         //TODO (2) getting data from bundle
@@ -41,11 +44,11 @@ public class SecondActivity extends BaseActivity {
 //        UserData userData = (UserData) intent.getSerializableExtra(Constants.SERIALIZEDDATA);
 
         //TODO (3) getting data from JSON object
-        String jsonData = intent.getStringExtra(Constants.JSONDATA);
-        UserData userData = new Gson().fromJson(jsonData, UserData.class);
+//        String jsonData = intent.getStringExtra(Constants.JSONDATA);
+//        UserData userData = new Gson().fromJson(jsonData, UserData.class);
 
-        binding.tvName.setText(userData.getFname()+ " "+ userData.getLname());
-        binding.tvPhooneNo.setText(userData.getPhoneno());
+//        binding.tvName.setText(userData.getFname()+ " "+ userData.getLname());
+//        binding.tvPhooneNo.setText(userData.getPhoneno());
 
 
 

@@ -97,8 +97,5 @@ public class DialogConceptsActivity extends AppCompatActivity implements View.On
         dialog.show();
         dialog.getWindow().setAttributes(layoutParams);
 
-
-
-
     }
 }

@@ -15,7 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ChetuFirstTraninig">
         <activity
-            android:name=".activities.DialogConceptsActivity"
+            android:name=".activities.WebviewActivity"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,12 +23,22 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activities.ImpliciteIntentActivity"
+            android:name=".activities.DialogConceptsActivity"
             android:exported="true">
 <!--            <intent-filter>-->
 <!--                <action android:name="android.intent.action.MAIN" />-->
+
 <!--                <category android:name="android.intent.category.LAUNCHER" />-->
 <!--            </intent-filter>-->
+        </activity>
+        <activity
+            android:name=".activities.ImpliciteIntentActivity"
+            android:exported="true">
+
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
         <activity
             android:name=".activities.ThirdPageActivity"
@@ -76,4 +86,5 @@
             <!-- </intent-filter> -->
         </activity>
     </application>
+
 </manifest>
